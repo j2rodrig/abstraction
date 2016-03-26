@@ -1,7 +1,7 @@
 {
   "name": "abstraction",
-  "version": "0.0.0",
-  "description": "A cross-device abstraction layer.",
+  "version": "0.0.1",
+  "description": "A cross-device abstraction layer for transactional object storage.",
   "main": "abstraction.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

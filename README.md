@@ -27,5 +27,13 @@ update. It is sufficient for a synchronization query to specify the
 last-validated version number, which prompts the server to reply with all
 objects that have been added/updated/removed since that version.
 
+## Fully Asynchronous Model
+
+You should expect that most operations in the module will complete asynchronously.
+
+Callbacks are not executed immediately. Callbacks for completed operations are
+queued until processCompletedActions is called. This gives the application maximum
+control over when results are processed.
+
 ---
 This project is copyrighted under the terms of the [MIT License.](LICENSE.md) 
