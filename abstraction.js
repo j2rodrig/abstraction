@@ -48,6 +48,32 @@ heterogeneous object graphs.
 			for (callback of completed) callback();
 		},
 
+		newTemporaryLocalSpace: function() {
+			var space = {
+				version: 0,
+				objects: {},
+				getLocal: function(key) {
+					debugtext.log("getLocal", key);
+					return space.objects[key];
+				},
+				insert: function(o, callback) {
+					var newVersion = space.version + 1;
+					o.key = newVersion;
+					o.version = newVersion;
+					space.version = newVersion;
+					space.objects[o.key] = o;
+					debugtext.log("insert", o.key);
+				},
+				update: function(o, callback) {
+					var newVersion = space.version + 1;
+					o.version = newVersion;
+					space.version = newVersion;
+					space.objects[o.key] = o;
+				},
+			};
+			return space;
+		},
+
 		/*
 		Creates an object store with the given name.
 
